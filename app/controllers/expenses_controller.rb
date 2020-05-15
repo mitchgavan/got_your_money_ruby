@@ -1,4 +1,12 @@
 class ExpensesController < ApplicationController
+  def index
+    @expenses = Expense.all
+  end
+
+  def show
+    @expense = Expense.find(params[:id])
+  end
+
   def new
   end
 
@@ -7,10 +15,6 @@ class ExpensesController < ApplicationController
 
     @expense.save
     redirect_to @expense
-  end
-
-  def show
-    @expense = Expense.find(params[:id])
   end
 
   private
