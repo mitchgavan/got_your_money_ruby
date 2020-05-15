@@ -1,0 +1,21 @@
+<h1>New Expense</h1>
+<%= form_with scope: :expense, local: true do |form| %>
+  <p>
+    <%= form.label :title %><br>
+    <%= form.text_field :title %>
+  </p>
+
+  <p>
+    <%= form.label :cost %><br>
+    <%= form.number_field :cost %>
+  </p>
+ 
+  <p>
+    <%= form.label :date %><br>
+    <%= form.date_field :date %>
+  </p>
+ 
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>
