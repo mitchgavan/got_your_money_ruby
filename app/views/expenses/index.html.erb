@@ -18,6 +18,7 @@
       <td><%= expense.cost %></td>
       <td><%= expense.date %></td>
       <td><%= link_to 'Show', expense_path(expense) %></td>
+      <td><%= link_to 'Edit', edit_expense_path(expense) %></td>
     </tr>
   <% end %>
 </table>
