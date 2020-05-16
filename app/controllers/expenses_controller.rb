@@ -27,12 +27,19 @@ class ExpensesController < ApplicationController
 
   def update
     @expense = Expense.find(params[:id])
-    
+
     if @expense.update(expense_params)
       redirect_to @expense
     else
       render 'edit'
     end
+  end
+
+  def destroy
+    @expense = Expense.find(params[:id])
+    @expense.destroy
+
+    redirect_to expenses_path
   end
 
   private
