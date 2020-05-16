@@ -1,23 +1,23 @@
-<h1>New Expense</h1>
+<h1 class="text-2xl mb-3">New Expense</h1>
 <%= form_with scope: :expense, url: expenses_path, local: true do |form| %>
-  <p>
+  <div class="mb-4">
     <%= form.label :title %><br>
-    <%= form.text_field :title %>
-  </p>
+    <%= form.text_field :title, class: 'border' %>
+  </div>
 
-  <p>
+  <div class="mb-4">
     <%= form.label :cost %><br>
-    <%= form.number_field :cost %>
-  </p>
+    <%= form.number_field :cost, class: 'border' %>
+  </div>
  
-  <p>
+  <div class="mb-6">
     <%= form.label :date %><br>
-    <%= form.date_field :date %>
-  </p>
+    <%= form.date_field :date, class: 'border' %>
+  </div>
  
-  <p>
-    <%= form.submit %>
-  </p>
+  <div class="mb-4">
+    <%= form.submit class: 'btn btn-green' %>
+  </div>
 
-  <%= link_to 'Back', expenses_path%>
+  <%= link_to 'Back', expenses_path, class: 'underline'%>
 <% end %>
