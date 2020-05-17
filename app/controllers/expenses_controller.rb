@@ -1,6 +1,13 @@
 class ExpensesController < ApplicationController
   def index
-    @expenses = Expense.all
+    @start_date = Date.today.at_beginning_of_week
+    @end_date = @start_date + 6.days
+
+    @expenses = Expense
+      .where('date > ?', @start_date)
+      .where('date <= ?', @end_date)
+
+    @total_cost = @expenses.sum {|e| e.cost}
   end
 
   def show
