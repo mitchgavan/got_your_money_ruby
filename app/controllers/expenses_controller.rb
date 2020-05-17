@@ -1,16 +1,16 @@
 class ExpensesController < ApplicationController
   def index
-    if params[:q]
-      @week_offset = params[:q]
+    if params[:offset]
+      @week_offset = params[:offset].to_i
     else
       @week_offset = 0
     end
 
-    @start_date = Date.today.at_beginning_of_week + @week_offset.to_i.weeks
+    @start_date = Date.today.at_beginning_of_week + @week_offset.weeks
     @end_date = @start_date + 6.days
 
     @expenses = Expense
-      .where('date > ?', @start_date)
+      .where('date >= ?', @start_date)
       .where('date <= ?', @end_date)
 
     @total_cost = @expenses.sum {|e| e.cost}
