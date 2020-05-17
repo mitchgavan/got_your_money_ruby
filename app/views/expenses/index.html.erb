@@ -28,3 +28,6 @@
     </tr>
   <% end %>
 </table>
+
+<%= link_to "Previous Week", expenses_path(q: @week_offset.to_i - 1) %>
+<%= link_to "Next Week", expenses_path(q: @week_offset.to_i + 1) %>

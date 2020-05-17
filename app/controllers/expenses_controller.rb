@@ -1,6 +1,12 @@
 class ExpensesController < ApplicationController
   def index
-    @start_date = Date.today.at_beginning_of_week
+    if params[:q]
+      @week_offset = params[:q]
+    else
+      @week_offset = 0
+    end
+
+    @start_date = Date.today.at_beginning_of_week + @week_offset.to_i.weeks
     @end_date = @start_date + 6.days
 
     @expenses = Expense
