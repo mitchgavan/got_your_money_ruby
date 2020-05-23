@@ -8,7 +8,7 @@
 
     <div class="text-xl font-bold mb-3"><%= number_to_currency(@total_cost) %></div>
 
-    <%= link_to 'New expense', new_expense_path, class: 'btn btn-green mb-4' %>
+    <%= link_to 'New Expense', new_expense_path, class: 'btn btn-green mb-4' %>
 
     <div class="mb-2">
       <%= link_to "Previous Week", expenses_path(offset: @week_offset.to_i - 1), class: 'text-purple-600' %>
@@ -23,7 +23,12 @@
           <div><%= expense.title %></div>
           <div><%= number_to_currency expense.cost %></div>
           <div><%= expense.date.strftime('%d/%m/%y') %></div>
-          <div><%= link_to 'Show', expense_path(expense) %></div>
+          <div class="pt-2 text-right text-gray-600 text-sm">
+            <%= link_to 'Edit', edit_expense_path(expense) %> | 
+            <%= link_to 'Delete', expense_path(expense),
+              method: :delete,
+              data: { confirm: 'Are you sure?' } %>
+          </div>
         </div>
       <% end %>
   </div>
