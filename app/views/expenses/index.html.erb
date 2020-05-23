@@ -1,13 +1,20 @@
+<div class="text-center">
+  <h1 class="text-2xl mb-1">Weekly Spending</h1>
 
-<h1 class="text-2xl mb-3">Weekly Spending</h1>
+  <div class="mb-3 text-gray-600">
+    <%= @start_date.strftime('%d/%m/%y') %> to <%= @end_date.strftime('%d/%m/%y') %>
+  </div>
 
-<div><%= number_to_currency(@total_cost) %></div>
-<div><%= @start_date.strftime('%d/%m/%y') %> to <%= @end_date.strftime('%d/%m/%y') %></div>
+  <div class="text-xl font-bold mb-3"><%= number_to_currency(@total_cost) %></div>
 
-<%= link_to 'New expense', new_expense_path, class: 'btn btn-green mb-3' %>
+  <%= link_to 'New expense', new_expense_path, class: 'btn btn-green mb-4' %>
 
-<%= link_to "Previous Week", expenses_path(offset: @week_offset.to_i - 1) %>
-<%= link_to "Next Week", expenses_path(offset: @week_offset.to_i + 1) %>
+  <div class="mb-6">
+    <%= link_to "Previous Week", expenses_path(offset: @week_offset.to_i - 1), class: 'text-purple-600' %>
+    |
+    <%= link_to "Next Week", expenses_path(offset: @week_offset.to_i + 1), class: 'text-purple-600' %>
+  </div>
+</div>
 
 
  
