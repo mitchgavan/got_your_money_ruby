@@ -1,41 +1,31 @@
-<div class="text-center">
-  <h1 class="text-2xl mb-1">Weekly Spending</h1>
+<div class="bg-gray-200 min-h-screen">
+  <div class="text-center bg-white p-4">
+    <h1 class="text-2xl mb-1">Weekly Spending</h1>
 
-  <div class="mb-3 text-gray-600">
-    <%= @start_date.strftime('%d/%m/%y') %> to <%= @end_date.strftime('%d/%m/%y') %>
+    <div class="mb-3 text-gray-600">
+      <%= @start_date.strftime('%d/%m/%y') %> to <%= @end_date.strftime('%d/%m/%y') %>
+    </div>
+
+    <div class="text-xl font-bold mb-3"><%= number_to_currency(@total_cost) %></div>
+
+    <%= link_to 'New expense', new_expense_path, class: 'btn btn-green mb-4' %>
+
+    <div class="mb-2">
+      <%= link_to "Previous Week", expenses_path(offset: @week_offset.to_i - 1), class: 'text-purple-600' %>
+      |
+      <%= link_to "Next Week", expenses_path(offset: @week_offset.to_i + 1), class: 'text-purple-600' %>
+    </div>
   </div>
 
-  <div class="text-xl font-bold mb-3"><%= number_to_currency(@total_cost) %></div>
-
-  <%= link_to 'New expense', new_expense_path, class: 'btn btn-green mb-4' %>
-
-  <div class="mb-6">
-    <%= link_to "Previous Week", expenses_path(offset: @week_offset.to_i - 1), class: 'text-purple-600' %>
-    |
-    <%= link_to "Next Week", expenses_path(offset: @week_offset.to_i + 1), class: 'text-purple-600' %>
+  <div class="grid grid-cols-2 gap-4 p-4">
+    <% @expenses.each do |expense| %>
+        <div class="bg-white px-4 py-3 rounded border-color-g">
+          <div><%= expense.title %></div>
+          <div><%= number_to_currency expense.cost %></div>
+          <div><%= expense.date.strftime('%d/%m/%y') %></div>
+          <div><%= link_to 'Show', expense_path(expense) %></div>
+        </div>
+      <% end %>
   </div>
+
 </div>
-
-
- 
-<table>
-  <tr>
-    <th>Title</th>
-    <th>Cost</th>
-    <th>Date</th>
-    <th></th>
-  </tr>
- 
-  <% @expenses.each do |expense| %>
-    <tr>
-      <td><%= expense.title %></td>
-      <td><%= number_to_currency expense.cost %></td>
-      <td><%= expense.date.strftime('%d/%m/%y') %></td>
-      <td><%= link_to 'Show', expense_path(expense) %></td>
-      <td><%= link_to 'Edit', edit_expense_path(expense) %></td>
-      <td><%= link_to 'Destroy', expense_path(expense),
-              method: :delete,
-              data: { confirm: 'Are you sure?' } %></td>
-    </tr>
-  <% end %>
-</table>
