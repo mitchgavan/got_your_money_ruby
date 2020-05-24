@@ -12,6 +12,8 @@ class ExpensesController < ApplicationController
     @expenses = Expense
       .where('date >= ?', @start_date)
       .where('date <= ?', @end_date)
+      .sort_by {|e| e.date}
+      .reverse
 
     @total_cost = @expenses.sum {|e| e.cost}
   end
