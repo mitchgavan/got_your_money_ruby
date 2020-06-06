@@ -1,17 +1,17 @@
 <%= form_with model: @expense, local: true do |form| %>
   <div class="mb-4">
     <%= form.label :title %>
-    <%= form.text_field :title, class: 'border' %>
+    <%= form.text_field :title, class: 'form-input' %>
   </div>
 
   <div class="mb-4">
     <%= form.label :cost %>
-    <%= form.number_field :cost, class: 'border' %>
+    <%= form.text_field :cost, inputmode: 'numeric', class: 'form-input' %>
   </div>
  
   <div class="mb-6">
     <%= form.label :date %>
-    <%= form.date_field :date, class: 'border' %>
+    <%= form.date_field :date, class: 'form-input' %>
   </div>
  
   <div class="mb-4">

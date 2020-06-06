@@ -11,7 +11,7 @@
     <%= link_to 'New Expense', new_expense_path, class: 'btn btn-green mb-4' %>
 
     <div class="mb-2">
-      <%= link_to "Previous Week", expenses_path(offset: @week_offset.to_i - 1), class: 'text-purple-600' %>
+      <%= link_to "Prev Week", expenses_path(offset: @week_offset.to_i - 1), class: 'text-purple-600' %>
       |
       <%= link_to "Next Week", expenses_path(offset: @week_offset.to_i + 1), class: 'text-purple-600' %>
     </div>
