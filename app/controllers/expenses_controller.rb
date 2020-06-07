@@ -34,7 +34,7 @@ class ExpensesController < ApplicationController
     @expense = Expense.new(expense_params)
 
     if @expense.save
-      redirect_to @expense
+      redirect_to expenses_path
     else
       render 'new'
     end

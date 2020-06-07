@@ -1,17 +1,17 @@
-<p>
+<div class="mb-3 text-gray-600">
   <strong>Title:</strong>
   <%= @expense.title %>
-</p>
+</div>
  
-<p>
+<div class="mb-3 text-gray-600">
   <strong>Cost:</strong>
   <%= @expense.cost %>
-</p>
+</div>
 
-<p>
+<div class="mb-3 text-gray-600">
   <strong>Date:</strong>
   <%= @expense.date %>
-</p>
+</div>
 
 <%= link_to 'Edit', edit_expense_path(@expense) %> | 
 <%= link_to 'Back', expenses_path %>
